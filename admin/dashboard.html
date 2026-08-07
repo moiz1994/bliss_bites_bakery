@@ -1,0 +1,2586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Bliss Bites Bakery</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <!-- ============ SIDEBAR OVERLAY (Mobile) ============ -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon">
+          <i class="bi bi-cup-hot-fill"></i>
+        </div>
+        <div class="brand-text">
+          <h5>Bliss Bites</h5>
+          <small>Admin Panel</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link active" data-page="dashboard">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link" data-page="orders">
+            <i class="bi bi-cart-check"></i>
+            Orders
+            <span class="badge">12</span>
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link" data-page="cakes">
+            <i class="bi bi-cake2"></i>
+            Cakes
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link" data-page="categories">
+            <i class="bi bi-grid"></i>
+            Categories
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link" data-page="weight-classes">
+            <i class="bi bi-boxes"></i>
+            Weight Classes
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link" data-page="settings">
+            <i class="bi bi-gear"></i>
+            Settings
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="main-content" id="mainContent">
+      <!-- Top Navbar -->
+      <nav class="top-navbar">
+        <button class="toggle-btn" id="toggleSidebar">
+          <i class="bi bi-list"></i>
+        </button>
+
+        <div class="nav-right">
+          <button class="icon-btn">
+            <i class="bi bi-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <div class="admin-avatar" title="Admin">A</div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="page-content" id="pageContent">
+        <!-- Dashboard Content (Default) -->
+        <div id="dashboardContent">
+          <div class="page-header">
+            <h4><i class="bi bi-speedometer2 me-2"></i>Dashboard</h4>
+            <p>Welcome back! Here's what's happening with your bakery today.</p>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="row g-3 mb-4">
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon orders">
+                  <i class="bi bi-cart-check"></i>
+                </div>
+                <div class="stat-value">156</div>
+                <div class="stat-label">Total Orders</div>
+                <div class="stat-change positive">
+                  <i class="bi bi-arrow-up-short"></i> 12% from last month
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon revenue">
+                  <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="stat-value">Rs. 85,400</div>
+                <div class="stat-label">Total Revenue</div>
+                <div class="stat-change positive">
+                  <i class="bi bi-arrow-up-short"></i> 8% from last month
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon cakes">
+                  <i class="bi bi-cake2"></i>
+                </div>
+                <div class="stat-value">24</div>
+                <div class="stat-label">Total Cakes</div>
+                <div class="stat-change positive">
+                  <i class="bi bi-plus-circle"></i> 3 new added
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon pending">
+                  <i class="bi bi-hourglass-split"></i>
+                </div>
+                <div class="stat-value">8</div>
+                <div class="stat-label">Pending Orders</div>
+                <div class="stat-change" style="color: #e53e3e">
+                  <i class="bi bi-exclamation-circle"></i> Needs attention
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <span>Recent Orders</span>
+              <a
+                href="#"
+                class="btn btn-sm text-decoration-none"
+                style="background: var(--peach-pale); color: var(--peach-dark)"
+                onclick="showPage('orders')"
+              >
+                View All <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Cake</th>
+                    <th>Weight</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>#BB-1001</strong></td>
+                    <td>Ayesha Khan</td>
+                    <td>Chocolate Fudge</td>
+                    <td>2 Pound</td>
+                    <td>Rs. 3,500</td>
+                    <td>
+                      <span class="badge-status badge-pending">Pending</span>
+                    </td>
+                    <td>15 Mar 2024</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#BB-1002</strong></td>
+                    <td>Fatima Ali</td>
+                    <td>Vanilla Cream</td>
+                    <td>1 Pound</td>
+                    <td>Rs. 1,800</td>
+                    <td>
+                      <span class="badge-status badge-confirmed"
+                        >Confirmed</span
+                      >
+                    </td>
+                    <td>15 Mar 2024</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#BB-1003</strong></td>
+                    <td>Zara Ahmed</td>
+                    <td>Red Velvet</td>
+                    <td>3 Pound</td>
+                    <td>Rs. 5,200</td>
+                    <td><span class="badge-status badge-ready">Ready</span></td>
+                    <td>14 Mar 2024</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#BB-1004</strong></td>
+                    <td>Hira Imran</td>
+                    <td>Pineapple Cream</td>
+                    <td>2 Pound</td>
+                    <td>Rs. 3,200</td>
+                    <td>
+                      <span class="badge-status badge-delivered"
+                        >Delivered</span
+                      >
+                    </td>
+                    <td>14 Mar 2024</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#BB-1005</strong></td>
+                    <td>Sana Tariq</td>
+                    <td>Fondant Wedding</td>
+                    <td>4 Pound</td>
+                    <td>Rs. 8,500</td>
+                    <td>
+                      <span class="badge-status badge-pending">Pending</span>
+                    </td>
+                    <td>13 Mar 2024</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Content -->
+        <div id="ordersContent" style="display: none">
+          <div
+            class="page-header d-flex justify-content-between align-items-center flex-wrap"
+          >
+            <div>
+              <h4><i class="bi bi-cart-check me-2"></i>Orders</h4>
+              <p>Manage all customer orders</p>
+            </div>
+            <button
+              class="btn text-white"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--peach-primary),
+                  var(--peach-dark)
+                );
+                border-radius: 10px;
+                padding: 10px 20px;
+              "
+            >
+              <i class="bi bi-download me-2"></i>Export Orders
+            </button>
+          </div>
+
+          <!-- Stats Mini Cards -->
+          <div class="row g-3 mb-4">
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="stat-value" style="font-size: 24px">156</div>
+                    <div class="stat-label">All Orders</div>
+                  </div>
+                  <div
+                    class="stat-icon orders"
+                    style="width: 40px; height: 40px; font-size: 18px"
+                  >
+                    <i class="bi bi-cart-check"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div
+                      class="stat-value"
+                      style="font-size: 24px; color: #856404"
+                    >
+                      8
+                    </div>
+                    <div class="stat-label">Pending</div>
+                  </div>
+                  <div
+                    class="stat-icon"
+                    style="
+                      background: #fff3cd;
+                      color: #856404;
+                      width: 40px;
+                      height: 40px;
+                      font-size: 18px;
+                    "
+                  >
+                    <i class="bi bi-hourglass-split"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div
+                      class="stat-value"
+                      style="font-size: 24px; color: #155724"
+                    >
+                      98
+                    </div>
+                    <div class="stat-label">Delivered</div>
+                  </div>
+                  <div
+                    class="stat-icon"
+                    style="
+                      background: #d4edda;
+                      color: #155724;
+                      width: 40px;
+                      height: 40px;
+                      font-size: 18px;
+                    "
+                  >
+                    <i class="bi bi-check-circle"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div
+                      class="stat-value"
+                      style="font-size: 24px; color: #e53e3e"
+                    >
+                      3
+                    </div>
+                    <div class="stat-label">Cancelled</div>
+                  </div>
+                  <div
+                    class="stat-icon"
+                    style="
+                      background: #fde8e8;
+                      color: #e53e3e;
+                      width: 40px;
+                      height: 40px;
+                      font-size: 18px;
+                    "
+                  >
+                    <i class="bi bi-x-circle"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters & Search -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >SEARCH</label
+                  >
+                  <div class="input-group">
+                    <span
+                      class="input-group-text"
+                      style="
+                        background: var(--peach-pale);
+                        border-color: var(--peach-light);
+                      "
+                    >
+                      <i
+                        class="bi bi-search"
+                        style="color: var(--peach-dark)"
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Order # or customer name..."
+                      style="border-color: var(--peach-light)"
+                      id="orderSearch"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >STATUS</label
+                  >
+                  <select
+                    class="form-select"
+                    style="border-color: var(--peach-light)"
+                    id="statusFilter"
+                  >
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="processing">Processing</option>
+                    <option value="ready">Ready</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >DATE FROM</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    style="border-color: var(--peach-light)"
+                    id="dateFrom"
+                  />
+                </div>
+                <div class="col-md-2">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >DATE TO</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    style="border-color: var(--peach-light)"
+                    id="dateTo"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <button
+                    class="btn text-white w-100"
+                    style="
+                      background: linear-gradient(
+                        135deg,
+                        var(--peach-primary),
+                        var(--peach-dark)
+                      );
+                      border-radius: 10px;
+                    "
+                    onclick="filterOrders()"
+                  >
+                    <i class="bi bi-funnel me-2"></i>Apply Filters
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Orders Table -->
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <span
+                >All Orders <small class="text-muted">(156 orders)</small></span
+              >
+              <div>
+                <button
+                  class="btn btn-sm btn-outline-secondary me-2"
+                  style="border-radius: 8px"
+                >
+                  <i class="bi bi-printer me-1"></i> Print
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" /></th>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Cake(s)</th>
+                    <th>Delivery Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><strong>#BB-1001</strong></td>
+                    <td>
+                      <div class="fw-semibold">Ayesha Khan</div>
+                      <small class="text-muted">Lahore, Punjab</small>
+                    </td>
+                    <td>0300-1234567</td>
+                    <td>
+                      Chocolate Fudge (2 Pound)
+                      <br /><small class="text-muted"
+                        >+ Vanilla Cream (1 Pound)</small
+                      >
+                    </td>
+                    <td>20 Mar 2024</td>
+                    <td><strong>Rs. 5,300</strong></td>
+                    <td>
+                      <span class="badge-status badge-pending">Pending</span>
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button
+                          class="btn btn-sm"
+                          style="
+                            background: var(--peach-pale);
+                            border-radius: 8px;
+                          "
+                          data-bs-toggle="dropdown"
+                        >
+                          <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul
+                          class="dropdown-menu dropdown-menu-end shadow-sm"
+                          style="
+                            border: 1px solid var(--border-color);
+                            border-radius: 10px;
+                          "
+                        >
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              onclick="viewOrderDetails('BB-1001')"
+                              ><i class="bi bi-eye me-2"></i>View Details</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              onclick="updateStatus('BB-1001', 'confirmed')"
+                              ><i class="bi bi-check-circle me-2"></i>Confirm</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              class="dropdown-item text-danger"
+                              href="#"
+                              onclick="updateStatus('BB-1001', 'cancelled')"
+                              ><i class="bi bi-x-circle me-2"></i>Cancel</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><strong>#BB-1002</strong></td>
+                    <td>
+                      <div class="fw-semibold">Fatima Ali</div>
+                      <small class="text-muted">Karachi, Sindh</small>
+                    </td>
+                    <td>0321-9876543</td>
+                    <td>Vanilla Cream (1 Pound)</td>
+                    <td>20 Mar 2024</td>
+                    <td><strong>Rs. 1,800</strong></td>
+                    <td>
+                      <span class="badge-status badge-confirmed"
+                        >Confirmed</span
+                      >
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button
+                          class="btn btn-sm"
+                          style="
+                            background: var(--peach-pale);
+                            border-radius: 8px;
+                          "
+                          data-bs-toggle="dropdown"
+                        >
+                          <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul
+                          class="dropdown-menu dropdown-menu-end shadow-sm"
+                          style="
+                            border: 1px solid var(--border-color);
+                            border-radius: 10px;
+                          "
+                        >
+                          <li>
+                            <a class="dropdown-item" href="#"
+                              ><i class="bi bi-eye me-2"></i>View Details</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#"
+                              ><i class="bi bi-arrow-right-circle me-2"></i
+                              >Processing</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><strong>#BB-1003</strong></td>
+                    <td>
+                      <div class="fw-semibold">Zara Ahmed</div>
+                      <small class="text-muted">Islamabad</small>
+                    </td>
+                    <td>0333-5551234</td>
+                    <td>Red Velvet (3 Pound)</td>
+                    <td>19 Mar 2024</td>
+                    <td><strong>Rs. 5,200</strong></td>
+                    <td><span class="badge-status badge-ready">Ready</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button
+                          class="btn btn-sm"
+                          style="
+                            background: var(--peach-pale);
+                            border-radius: 8px;
+                          "
+                          data-bs-toggle="dropdown"
+                        >
+                          <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul
+                          class="dropdown-menu dropdown-menu-end shadow-sm"
+                          style="
+                            border: 1px solid var(--border-color);
+                            border-radius: 10px;
+                          "
+                        >
+                          <li>
+                            <a class="dropdown-item" href="#"
+                              ><i class="bi bi-eye me-2"></i>View Details</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#"
+                              ><i class="bi bi-truck me-2"></i>Mark Delivered</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><strong>#BB-1004</strong></td>
+                    <td>
+                      <div class="fw-semibold">Hira Imran</div>
+                      <small class="text-muted">Faisalabad</small>
+                    </td>
+                    <td>0345-1112233</td>
+                    <td>Pineapple Cream (2 Pound)</td>
+                    <td>18 Mar 2024</td>
+                    <td><strong>Rs. 3,200</strong></td>
+                    <td>
+                      <span class="badge-status badge-delivered"
+                        >Delivered</span
+                      >
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-sm"
+                        style="
+                          background: var(--peach-pale);
+                          border-radius: 8px;
+                        "
+                      >
+                        <i class="bi bi-eye"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><strong>#BB-1005</strong></td>
+                    <td>
+                      <div class="fw-semibold">Sana Tariq</div>
+                      <small class="text-muted">Rawalpindi</small>
+                    </td>
+                    <td>0312-9998877</td>
+                    <td>Fondant Wedding Cake (4 Pound)</td>
+                    <td>17 Mar 2024</td>
+                    <td><strong>Rs. 8,500</strong></td>
+                    <td>
+                      <span class="badge-status badge-pending">Pending</span>
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button
+                          class="btn btn-sm"
+                          style="
+                            background: var(--peach-pale);
+                            border-radius: 8px;
+                          "
+                          data-bs-toggle="dropdown"
+                        >
+                          <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul
+                          class="dropdown-menu dropdown-menu-end shadow-sm"
+                          style="
+                            border: 1px solid var(--border-color);
+                            border-radius: 10px;
+                          "
+                        >
+                          <li>
+                            <a class="dropdown-item" href="#"
+                              ><i class="bi bi-eye me-2"></i>View Details</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#"
+                              ><i class="bi bi-check-circle me-2"></i>Confirm</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item text-danger" href="#"
+                              ><i class="bi bi-x-circle me-2"></i>Cancel</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><strong>#BB-1006</strong></td>
+                    <td>
+                      <div class="fw-semibold">Nida Hassan</div>
+                      <small class="text-muted">Multan</small>
+                    </td>
+                    <td>0300-4455667</td>
+                    <td>Strawberry Cream (1 Pound)</td>
+                    <td>16 Mar 2024</td>
+                    <td><strong>Rs. 1,900</strong></td>
+                    <td>
+                      <span class="badge-status badge-delivered"
+                        >Delivered</span
+                      >
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-sm"
+                        style="
+                          background: var(--peach-pale);
+                          border-radius: 8px;
+                        "
+                      >
+                        <i class="bi bi-eye"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><strong>#BB-1007</strong></td>
+                    <td>
+                      <div class="fw-semibold">Mariam Yousaf</div>
+                      <small class="text-muted">Peshawar</small>
+                    </td>
+                    <td>0334-7788990</td>
+                    <td>Black Forest (3 Pound)</td>
+                    <td>15 Mar 2024</td>
+                    <td><strong>Rs. 4,800</strong></td>
+                    <td>
+                      <span
+                        class="badge-status badge-cancelled"
+                        style="background: #fde8e8; color: #e53e3e"
+                        >Cancelled</span
+                      >
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-sm"
+                        style="
+                          background: var(--peach-pale);
+                          border-radius: 8px;
+                        "
+                      >
+                        <i class="bi bi-eye"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="card-footer border-top" style="background: transparent">
+              <div
+                class="d-flex justify-content-between align-items-center flex-wrap"
+              >
+                <small class="text-muted">Showing 1-7 of 156 orders</small>
+                <nav>
+                  <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled">
+                      <a
+                        class="page-link"
+                        href="#"
+                        style="color: var(--peach-dark)"
+                        >Previous</a
+                      >
+                    </li>
+                    <li class="page-item active">
+                      <a
+                        class="page-link"
+                        href="#"
+                        style="
+                          background: var(--peach-primary);
+                          border-color: var(--peach-primary);
+                        "
+                        >1</a
+                      >
+                    </li>
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        href="#"
+                        style="color: var(--peach-dark)"
+                        >2</a
+                      >
+                    </li>
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        href="#"
+                        style="color: var(--peach-dark)"
+                        >3</a
+                      >
+                    </li>
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        href="#"
+                        style="color: var(--peach-dark)"
+                        >...</a
+                      >
+                    </li>
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        href="#"
+                        style="color: var(--peach-dark)"
+                        >23</a
+                      >
+                    </li>
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        href="#"
+                        style="color: var(--peach-dark)"
+                        >Next</a
+                      >
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Detail Modal -->
+          <div class="modal fade" id="orderDetailModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div
+                class="modal-content"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div
+                  class="modal-header"
+                  style="
+                    background: var(--peach-pale);
+                    border-radius: 16px 16px 0 0;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <h5 class="modal-title">
+                    <i class="bi bi-receipt me-2"></i>Order Details -
+                    <span id="modalOrderNumber">#BB-1001</span>
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <small class="text-muted">CUSTOMER</small>
+                      <p class="fw-semibold mb-1" id="modalCustomer">
+                        Ayesha Khan
+                      </p>
+                      <p class="mb-0" id="modalPhone">0300-1234567</p>
+                      <p id="modalAddress">
+                        House 123, Street 5, Lahore, Punjab
+                      </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                      <small class="text-muted">ORDER INFO</small>
+                      <p class="mb-1">
+                        <strong>Order Date:</strong> 15 Mar 2024
+                      </p>
+                      <p class="mb-1">
+                        <strong>Delivery Date:</strong> 20 Mar 2024
+                      </p>
+                      <p>
+                        <span
+                          class="badge-status badge-pending"
+                          id="modalStatus"
+                          >Pending</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <hr />
+
+                  <small class="text-muted">ORDER ITEMS</small>
+                  <table
+                    class="table table-bordered mt-2"
+                    style="border-color: var(--border-color)"
+                  >
+                    <thead style="background: var(--peach-pale)">
+                      <tr>
+                        <th>Cake</th>
+                        <th>Type</th>
+                        <th>Weight</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody id="modalOrderItems">
+                      <tr>
+                        <td>Chocolate Fudge</td>
+                        <td>Cream</td>
+                        <td>2 Pound</td>
+                        <td>1</td>
+                        <td>Rs. 3,500</td>
+                      </tr>
+                      <tr>
+                        <td>Vanilla Cream</td>
+                        <td>Cream</td>
+                        <td>1 Pound</td>
+                        <td>1</td>
+                        <td>Rs. 1,800</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="4" class="text-end fw-bold">Total:</td>
+                        <td class="fw-bold">Rs. 5,300</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+
+                  <div
+                    class="p-3 rounded-3"
+                    style="background: var(--peach-pale)"
+                  >
+                    <small class="text-muted">SPECIAL INSTRUCTIONS</small>
+                    <p class="mb-0 mt-1" id="modalInstructions">
+                      Please write "Happy Birthday Ayesha" on the cake with pink
+                      icing.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="modal-footer"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <select
+                    class="form-select d-inline-block w-auto me-2"
+                    style="border-color: var(--peach-light)"
+                  >
+                    <option>Update Status</option>
+                    <option value="confirmed">Confirm</option>
+                    <option value="processing">Processing</option>
+                    <option value="ready">Ready</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancel</option>
+                  </select>
+                  <button
+                    type="button"
+                    class="btn text-white"
+                    style="background: var(--peach-dark); border-radius: 8px"
+                  >
+                    Update
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    style="border-radius: 8px"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cakes Content -->
+        <div id="cakesContent" style="display: none">
+          <div
+            class="page-header d-flex justify-content-between align-items-center flex-wrap"
+          >
+            <div>
+              <h4><i class="bi bi-cake2 me-2"></i>Cakes</h4>
+              <p>Manage your cake catalog</p>
+            </div>
+            <button
+              class="btn text-white"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--peach-primary),
+                  var(--peach-dark)
+                );
+                border-radius: 10px;
+                padding: 10px 20px;
+              "
+              onclick="openAddCakeModal()"
+            >
+              <i class="bi bi-plus-lg me-2"></i>Add New Cake
+            </button>
+          </div>
+
+          <!-- Stats Mini Cards -->
+          <div class="row g-3 mb-4">
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="stat-value" style="font-size: 24px">24</div>
+                    <div class="stat-label">Total Cakes</div>
+                  </div>
+                  <div
+                    class="stat-icon cakes"
+                    style="width: 40px; height: 40px; font-size: 18px"
+                  >
+                    <i class="bi bi-cake2"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="stat-value" style="font-size: 24px">14</div>
+                    <div class="stat-label">Cream Cakes</div>
+                  </div>
+                  <div
+                    class="stat-icon"
+                    style="
+                      background: #e8f5e9;
+                      color: #4caf50;
+                      width: 40px;
+                      height: 40px;
+                      font-size: 18px;
+                    "
+                  >
+                    <i class="bi bi-droplet"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="stat-value" style="font-size: 24px">10</div>
+                    <div class="stat-label">Fondant Cakes</div>
+                  </div>
+                  <div
+                    class="stat-icon"
+                    style="
+                      background: #fff3e0;
+                      color: #ff9800;
+                      width: 40px;
+                      height: 40px;
+                      font-size: 18px;
+                    "
+                  >
+                    <i class="bi bi-palette"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div
+                      class="stat-value"
+                      style="font-size: 24px; color: #e53e3e"
+                    >
+                      2
+                    </div>
+                    <div class="stat-label">Unavailable</div>
+                  </div>
+                  <div
+                    class="stat-icon"
+                    style="
+                      background: #fde8e8;
+                      color: #e53e3e;
+                      width: 40px;
+                      height: 40px;
+                      font-size: 18px;
+                    "
+                  >
+                    <i class="bi bi-slash-circle"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search & Filter -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >SEARCH</label
+                  >
+                  <div class="input-group">
+                    <span
+                      class="input-group-text"
+                      style="
+                        background: var(--peach-pale);
+                        border-color: var(--peach-light);
+                      "
+                    >
+                      <i
+                        class="bi bi-search"
+                        style="color: var(--peach-dark)"
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Cake name..."
+                      style="border-color: var(--peach-light)"
+                      id="cakeSearch"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >TYPE</label
+                  >
+                  <select
+                    class="form-select"
+                    style="border-color: var(--peach-light)"
+                    id="cakeTypeFilter"
+                  >
+                    <option value="all">All Types</option>
+                    <option value="cream">Cream</option>
+                    <option value="fondant">Fondant</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >CATEGORY</label
+                  >
+                  <select
+                    class="form-select"
+                    style="border-color: var(--peach-light)"
+                    id="cakeCategoryFilter"
+                  >
+                    <option value="all">All Categories</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="anniversary">Anniversary</option>
+                    <option value="baby-shower">Baby Shower</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 13px; color: var(--text-muted)"
+                    >STATUS</label
+                  >
+                  <select
+                    class="form-select"
+                    style="border-color: var(--peach-light)"
+                    id="cakeStatusFilter"
+                  >
+                    <option value="all">All Status</option>
+                    <option value="available">Available</option>
+                    <option value="unavailable">Unavailable</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <button
+                    class="btn text-white w-100"
+                    style="
+                      background: linear-gradient(
+                        135deg,
+                        var(--peach-primary),
+                        var(--peach-dark)
+                      );
+                      border-radius: 10px;
+                    "
+                    onclick="filterCakes()"
+                  >
+                    <i class="bi bi-funnel me-2"></i>Apply Filters
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cakes Grid -->
+          <div class="row g-4" id="cakesGrid">
+            <!-- Cake Card 1 -->
+            <div class="col-xl-4 col-md-6">
+              <div
+                class="card h-100 cake-card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop"
+                    class="card-img-top"
+                    alt="Chocolate Fudge"
+                    style="height: 200px; object-fit: cover"
+                  />
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: var(--peach-dark)"
+                    >Cream</span
+                  >
+                </div>
+                <div class="card-body">
+                  <h6 class="fw-bold mb-1">Chocolate Fudge Cake</h6>
+                  <small class="text-muted d-block mb-2">Birthday</small>
+                  <p
+                    class="small text-muted mb-2"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Rich chocolate cake with creamy fudge frosting, perfect for
+                    chocolate lovers.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span
+                      class="badge"
+                      style="background: #d4edda; color: #155724"
+                      >Chocolate</span
+                    >
+                    <small><i class="bi bi-clock me-1"></i>4-5 hours</small>
+                  </div>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border"
+                      >1lb: Rs. 1,800</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >2lb: Rs. 3,500</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >3lb: Rs. 5,000</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCake(1)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCake(1)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cake Card 2 -->
+            <div class="col-xl-4 col-md-6">
+              <div
+                class="card h-100 cake-card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=400&h=300&fit=crop"
+                    class="card-img-top"
+                    alt="Fondant Wedding"
+                    style="height: 200px; object-fit: cover"
+                  />
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: #ff9800"
+                    >Fondant</span
+                  >
+                </div>
+                <div class="card-body">
+                  <h6 class="fw-bold mb-1">Elegant Wedding Cake</h6>
+                  <small class="text-muted d-block mb-2">Wedding</small>
+                  <p
+                    class="small text-muted mb-2"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Three-tier fondant wedding cake with floral decorations and
+                    pearl details.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span
+                      class="badge"
+                      style="background: #fff3e0; color: #e65100"
+                      >Vanilla</span
+                    >
+                    <small><i class="bi bi-clock me-1"></i>2-3 days</small>
+                  </div>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border"
+                      >3lb: Rs. 8,500</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >5lb: Rs. 14,000</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCake(2)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCake(2)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cake Card 3 -->
+            <div class="col-xl-4 col-md-6">
+              <div
+                class="card h-100 cake-card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop"
+                    class="card-img-top"
+                    alt="Red Velvet"
+                    style="height: 200px; object-fit: cover"
+                  />
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: var(--peach-dark)"
+                    >Cream</span
+                  >
+                </div>
+                <div class="card-body">
+                  <h6 class="fw-bold mb-1">Red Velvet Dream</h6>
+                  <small class="text-muted d-block mb-2">Anniversary</small>
+                  <p
+                    class="small text-muted mb-2"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Classic red velvet with cream cheese frosting, decorated
+                    with red crumbs.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span
+                      class="badge"
+                      style="background: #fde8e8; color: #c62828"
+                      >Red Velvet</span
+                    >
+                    <small><i class="bi bi-clock me-1"></i>3-4 hours</small>
+                  </div>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border"
+                      >1lb: Rs. 2,200</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >2lb: Rs. 4,000</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >3lb: Rs. 5,800</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCake(3)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCake(3)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cake Card 4 -->
+            <div class="col-xl-4 col-md-6">
+              <div
+                class="card h-100 cake-card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=400&h=300&fit=crop"
+                    class="card-img-top"
+                    alt="Pineapple Cream"
+                    style="height: 200px; object-fit: cover"
+                  />
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: var(--peach-dark)"
+                    >Cream</span
+                  >
+                </div>
+                <div class="card-body">
+                  <h6 class="fw-bold mb-1">Pineapple Cream Cake</h6>
+                  <small class="text-muted d-block mb-2">Birthday</small>
+                  <p
+                    class="small text-muted mb-2"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Light and fluffy cake with fresh pineapple filling and
+                    whipped cream.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span
+                      class="badge"
+                      style="background: #fff9c4; color: #f57f17"
+                      >Pineapple</span
+                    >
+                    <small><i class="bi bi-clock me-1"></i>3 hours</small>
+                  </div>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border"
+                      >1lb: Rs. 1,600</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >2lb: Rs. 3,000</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCake(4)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCake(4)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cake Card 5 -->
+            <div class="col-xl-4 col-md-6">
+              <div
+                class="card h-100 cake-card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=300&fit=crop"
+                    class="card-img-top"
+                    alt="Fondant Birthday"
+                    style="height: 200px; object-fit: cover"
+                  />
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: #ff9800"
+                    >Fondant</span
+                  >
+                </div>
+                <div class="card-body">
+                  <h6 class="fw-bold mb-1">Fondant Birthday Cake</h6>
+                  <small class="text-muted d-block mb-2">Birthday</small>
+                  <p
+                    class="small text-muted mb-2"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Custom themed fondant cake with edible toppers and vibrant
+                    colors.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span
+                      class="badge"
+                      style="background: #e8eaf6; color: #283593"
+                      >Custom</span
+                    >
+                    <small><i class="bi bi-clock me-1"></i>1-2 days</small>
+                  </div>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border"
+                      >2lb: Rs. 4,500</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >3lb: Rs. 6,500</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCake(5)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCake(5)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cake Card 6 (Unavailable) -->
+            <div class="col-xl-4 col-md-6">
+              <div
+                class="card h-100 cake-card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                  opacity: 0.7;
+                "
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&h=300&fit=crop"
+                    class="card-img-top"
+                    alt="Strawberry Cream"
+                    style="height: 200px; object-fit: cover"
+                  />
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: #e53e3e"
+                    >Unavailable</span
+                  >
+                </div>
+                <div class="card-body">
+                  <h6 class="fw-bold mb-1">Strawberry Cream Cake</h6>
+                  <small class="text-muted d-block mb-2">Baby Shower</small>
+                  <p
+                    class="small text-muted mb-2"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Fresh strawberry cake layered with strawberry cream and
+                    topped with berries.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span
+                      class="badge"
+                      style="background: #fce4ec; color: #880e4f"
+                      >Strawberry</span
+                    >
+                    <small><i class="bi bi-clock me-1"></i>3-4 hours</small>
+                  </div>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border"
+                      >1lb: Rs. 2,000</span
+                    >
+                    <span class="badge bg-light text-dark border"
+                      >2lb: Rs. 3,800</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCake(6)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCake(6)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add/Edit Cake Modal -->
+          <div class="modal fade" id="cakeModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div
+                class="modal-content"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div
+                  class="modal-header"
+                  style="
+                    background: var(--peach-pale);
+                    border-radius: 16px 16px 0 0;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <h5 class="modal-title" id="cakeModalTitle">
+                    <i class="bi bi-plus-circle me-2"></i>Add New Cake
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+                <div
+                  class="modal-body"
+                  style="max-height: 60vh; overflow-y: auto"
+                >
+                  <form id="cakeForm">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >Cake Name *</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter cake name"
+                          style="border-color: var(--peach-light)"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">Flavor *</label>
+                        <select
+                          class="form-select"
+                          style="border-color: var(--peach-light)"
+                        >
+                          <option value="">Select flavor</option>
+                          <option>Chocolate</option>
+                          <option>Vanilla</option>
+                          <option>Red Velvet</option>
+                          <option>Pineapple</option>
+                          <option>Strawberry</option>
+                          <option>Black Forest</option>
+                          <option>Custom</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">Category *</label>
+                        <select
+                          class="form-select"
+                          style="border-color: var(--peach-light)"
+                        >
+                          <option value="">Select category</option>
+                          <option>Birthday</option>
+                          <option>Wedding</option>
+                          <option>Anniversary</option>
+                          <option>Baby Shower</option>
+                          <option>Custom</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >Cake Type *</label
+                        >
+                        <select
+                          class="form-select"
+                          style="border-color: var(--peach-light)"
+                        >
+                          <option value="">Select type</option>
+                          <option>Cream</option>
+                          <option>Fondant</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >Preparation Time</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="e.g., 3-4 hours"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">Status</label>
+                        <select
+                          class="form-select"
+                          style="border-color: var(--peach-light)"
+                        >
+                          <option>Available</option>
+                          <option>Unavailable</option>
+                        </select>
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label fw-semibold"
+                          >Description</label
+                        >
+                        <textarea
+                          class="form-control"
+                          rows="2"
+                          placeholder="Short description of the cake"
+                          style="border-color: var(--peach-light)"
+                        ></textarea>
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label fw-semibold"
+                          >Ingredients</label
+                        >
+                        <textarea
+                          class="form-control"
+                          rows="2"
+                          placeholder="List of ingredients"
+                          style="border-color: var(--peach-light)"
+                        ></textarea>
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label fw-semibold">Cake Image</label>
+                        <input
+                          type="file"
+                          class="form-control"
+                          accept="image/*"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+
+                      <!-- Weight & Price Section -->
+                      <div class="col-12 mt-3">
+                        <label class="form-label fw-semibold">
+                          <i class="bi bi-boxes me-1"></i>Weight & Price *
+                        </label>
+                        <div id="weightPriceContainer">
+                          <div class="row g-2 mb-2 weight-price-row">
+                            <div class="col-md-4">
+                              <select
+                                class="form-select"
+                                style="border-color: var(--peach-light)"
+                              >
+                                <option>1 Pound</option>
+                                <option>2 Pound</option>
+                                <option>3 Pound</option>
+                                <option>4 Pound</option>
+                                <option>5 Pound</option>
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="input-group">
+                                <span
+                                  class="input-group-text"
+                                  style="
+                                    background: var(--peach-pale);
+                                    border-color: var(--peach-light);
+                                  "
+                                  >Rs.</span
+                                >
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  placeholder="Price"
+                                  style="border-color: var(--peach-light)"
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                onclick="removeWeightPrice(this)"
+                                style="border-radius: 8px"
+                              >
+                                <i class="bi bi-x-lg"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-sm mt-2"
+                          style="
+                            background: var(--peach-pale);
+                            color: var(--peach-dark);
+                            border-radius: 8px;
+                          "
+                          onclick="addWeightPrice()"
+                        >
+                          <i class="bi bi-plus me-1"></i>Add Weight Option
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="modal-footer"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    style="border-radius: 8px"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn text-white"
+                    style="background: var(--peach-dark); border-radius: 8px"
+                    onclick="saveCake()"
+                  >
+                    <i class="bi bi-check-lg me-1"></i>Save Cake
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Content -->
+        <div id="categoriesContent" style="display: none">
+          <div
+            class="page-header d-flex justify-content-between align-items-center flex-wrap"
+          >
+            <div>
+              <h4><i class="bi bi-grid me-2"></i>Categories</h4>
+              <p>Manage cake categories for occasions</p>
+            </div>
+            <button
+              class="btn text-white"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--peach-primary),
+                  var(--peach-dark)
+                );
+                border-radius: 10px;
+                padding: 10px 20px;
+              "
+              onclick="openAddCategoryModal()"
+            >
+              <i class="bi bi-plus-lg me-2"></i>Add Category
+            </button>
+          </div>
+
+          <!-- Categories Grid -->
+          <div class="row g-4" id="categoriesGrid">
+            <!-- Category 1 -->
+            <div class="col-xl-3 col-md-6">
+              <div
+                class="card h-100"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div
+                  class="position-relative"
+                  style="
+                    height: 140px;
+                    background: linear-gradient(135deg, #ffb5a7, #f08080);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <i
+                    class="bi bi-gift-fill text-white"
+                    style="font-size: 48px; opacity: 0.8"
+                  ></i>
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: rgba(255, 255, 255, 0.3)"
+                    >12 Cakes</span
+                  >
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="fw-bold mb-1">Birthday</h6>
+                  <small class="text-muted">birthday</small>
+                  <p
+                    class="small text-muted mt-2 mb-0"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Special cakes for birthday celebrations
+                  </p>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCategory(1)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCategory(1)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 2 -->
+            <div class="col-xl-3 col-md-6">
+              <div
+                class="card h-100"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div
+                  class="position-relative"
+                  style="
+                    height: 140px;
+                    background: linear-gradient(135deg, #fcd5ce, #ff9b85);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <i
+                    class="bi bi-heart-fill text-white"
+                    style="font-size: 48px; opacity: 0.8"
+                  ></i>
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: rgba(255, 255, 255, 0.3)"
+                    >6 Cakes</span
+                  >
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="fw-bold mb-1">Wedding</h6>
+                  <small class="text-muted">wedding</small>
+                  <p
+                    class="small text-muted mt-2 mb-0"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Elegant wedding cakes for your special day
+                  </p>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCategory(2)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCategory(2)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="col-xl-3 col-md-6">
+              <div
+                class="card h-100"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div
+                  class="position-relative"
+                  style="
+                    height: 140px;
+                    background: linear-gradient(135deg, #ffd1d1, #ff8a80);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <i
+                    class="bi bi-calendar-heart-fill text-white"
+                    style="font-size: 48px; opacity: 0.8"
+                  ></i>
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: rgba(255, 255, 255, 0.3)"
+                    >4 Cakes</span
+                  >
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="fw-bold mb-1">Anniversary</h6>
+                  <small class="text-muted">anniversary</small>
+                  <p
+                    class="small text-muted mt-2 mb-0"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Celebrate your special moments with love
+                  </p>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCategory(3)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCategory(3)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 4 -->
+            <div class="col-xl-3 col-md-6">
+              <div
+                class="card h-100"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div
+                  class="position-relative"
+                  style="
+                    height: 140px;
+                    background: linear-gradient(135deg, #ffe0e0, #ffb5a7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <i
+                    class="bi bi-balloon-heart-fill text-white"
+                    style="font-size: 48px; opacity: 0.8"
+                  ></i>
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: rgba(255, 255, 255, 0.3)"
+                    >2 Cakes</span
+                  >
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="fw-bold mb-1">Baby Shower</h6>
+                  <small class="text-muted">baby-shower</small>
+                  <p
+                    class="small text-muted mt-2 mb-0"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Adorable cakes for baby shower celebrations
+                  </p>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCategory(4)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCategory(4)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 5 -->
+            <div class="col-xl-3 col-md-6">
+              <div
+                class="card h-100"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                "
+              >
+                <div
+                  class="position-relative"
+                  style="
+                    height: 140px;
+                    background: linear-gradient(135deg, #ffccbc, #ffab91);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <i
+                    class="bi bi-stars text-white"
+                    style="font-size: 48px; opacity: 0.8"
+                  ></i>
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: rgba(255, 255, 255, 0.3)"
+                    >5 Cakes</span
+                  >
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="fw-bold mb-1">Custom</h6>
+                  <small class="text-muted">custom</small>
+                  <p
+                    class="small text-muted mt-2 mb-0"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Custom designed cakes for any occasion
+                  </p>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCategory(5)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCategory(5)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 6 (Inactive) -->
+            <div class="col-xl-3 col-md-6">
+              <div
+                class="card h-100"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                  overflow: hidden;
+                  opacity: 0.6;
+                "
+              >
+                <div
+                  class="position-relative"
+                  style="
+                    height: 140px;
+                    background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <i
+                    class="bi bi-emoji-smile-fill text-white"
+                    style="font-size: 48px; opacity: 0.8"
+                  ></i>
+                  <span
+                    class="badge position-absolute top-0 end-0 m-2"
+                    style="background: rgba(0, 0, 0, 0.2)"
+                    >Inactive</span
+                  >
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="fw-bold mb-1">Eid Special</h6>
+                  <small class="text-muted">eid-special</small>
+                  <p
+                    class="small text-muted mt-2 mb-0"
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    "
+                  >
+                    Special cakes for Eid celebrations
+                  </p>
+                </div>
+                <div
+                  class="card-footer bg-white d-flex gap-2"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    class="btn btn-sm flex-grow-1"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="editCategory(6)"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm flex-grow-1 btn-outline-danger"
+                    style="border-radius: 8px"
+                    onclick="deleteCategory(6)"
+                  >
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Modal -->
+          <div class="modal fade" id="categoryModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div
+                class="modal-content"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div
+                  class="modal-header"
+                  style="
+                    background: var(--peach-pale);
+                    border-radius: 16px 16px 0 0;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <h5 class="modal-title" id="categoryModalTitle">
+                    <i class="bi bi-plus-circle me-2"></i>Add Category
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form id="categoryForm">
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold"
+                        >Category Name *</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="categoryName"
+                        placeholder="e.g., Birthday"
+                        style="border-color: var(--peach-light)"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold">Slug *</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="categorySlug"
+                        placeholder="e.g., birthday"
+                        style="border-color: var(--peach-light)"
+                        readonly
+                      />
+                      <small class="text-muted">Auto-generated from name</small>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold">Description</label>
+                      <textarea
+                        class="form-control"
+                        id="categoryDescription"
+                        rows="3"
+                        placeholder="Brief description of the category"
+                        style="border-color: var(--peach-light)"
+                      ></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold">Status</label>
+                      <select
+                        class="form-select"
+                        id="categoryStatus"
+                        style="border-color: var(--peach-light)"
+                      >
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold"
+                        >Category Image</label
+                      >
+                      <input
+                        type="file"
+                        class="form-control"
+                        accept="image/*"
+                        style="border-color: var(--peach-light)"
+                      />
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="modal-footer"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    style="border-radius: 8px"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn text-white"
+                    style="background: var(--peach-dark); border-radius: 8px"
+                    onclick="saveCategory()"
+                  >
+                    <i class="bi bi-check-lg me-1"></i>Save Category
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weight Classes Content -->
+        <div id="weightClassesContent" style="display: none">
+          <div class="page-header">
+            <h4><i class="bi bi-boxes me-2"></i>Weight Classes</h4>
+            <p>Manage cake weight options</p>
+          </div>
+          <div class="card p-5 text-center text-muted">
+            <i class="bi bi-boxes" style="font-size: 48px"></i>
+            <p class="mt-3">Weight Classes page content will be built next</p>
+          </div>
+        </div>
+
+        <!-- Settings Content -->
+        <div id="settingsContent" style="display: none">
+          <div class="page-header">
+            <h4><i class="bi bi-gear me-2"></i>Settings</h4>
+            <p>Site configuration</p>
+          </div>
+          <div class="card p-5 text-center text-muted">
+            <i class="bi bi-gear" style="font-size: 48px"></i>
+            <p class="mt-3">Settings page content will be built next</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
