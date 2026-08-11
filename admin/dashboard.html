@@ -17,7 +17,7 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
   </head>
   <body>
     <!-- ============ SIDEBAR OVERLAY (Mobile) ============ -->
@@ -26,9 +26,12 @@
     <!-- ============ SIDEBAR ============ -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-brand">
-        <div class="logo-icon">
-          <i class="bi bi-cup-hot-fill"></i>
-        </div>
+        <img
+          src="../assets/images/logo.webp"
+          alt="Bliss Bites Logo"
+          class="brand-logo"
+          width="50px"
+        />
         <div class="brand-text">
           <h5>Bliss Bites</h5>
           <small>Admin Panel</small>
@@ -2555,25 +2558,1043 @@
 
         <!-- Weight Classes Content -->
         <div id="weightClassesContent" style="display: none">
-          <div class="page-header">
-            <h4><i class="bi bi-boxes me-2"></i>Weight Classes</h4>
-            <p>Manage cake weight options</p>
+          <div
+            class="page-header d-flex justify-content-between align-items-center flex-wrap"
+          >
+            <div>
+              <h4><i class="bi bi-boxes me-2"></i>Weight Classes</h4>
+              <p>Manage cake weight options and pricing tiers</p>
+            </div>
+            <button
+              class="btn text-white"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--peach-primary),
+                  var(--peach-dark)
+                );
+                border-radius: 10px;
+                padding: 10px 20px;
+              "
+              onclick="openAddWeightClassModal()"
+            >
+              <i class="bi bi-plus-lg me-2"></i>Add Weight Class
+            </button>
           </div>
-          <div class="card p-5 text-center text-muted">
-            <i class="bi bi-boxes" style="font-size: 48px"></i>
-            <p class="mt-3">Weight Classes page content will be built next</p>
+
+          <!-- Weight Classes Table -->
+          <div class="row">
+            <div class="col-lg-8">
+              <div
+                class="card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
+                  <span
+                    ><i class="bi bi-list-ul me-2"></i>All Weight Classes</span
+                  >
+                  <span
+                    class="badge"
+                    style="background: var(--peach-primary); color: white"
+                    >5 Classes</span
+                  >
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Weight Name</th>
+                        <th>Value</th>
+                        <th>Unit</th>
+                        <th>Status</th>
+                        <th>Used In</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <div
+                              style="
+                                width: 35px;
+                                height: 35px;
+                                background: var(--peach-pale);
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                              "
+                            >
+                              <i
+                                class="bi bi-1-circle-fill"
+                                style="color: var(--peach-dark)"
+                              ></i>
+                            </div>
+                            <strong>1 Pound Cake</strong>
+                          </div>
+                        </td>
+                        <td>1.00</td>
+                        <td>
+                          <span class="badge bg-light text-dark">Pound</span>
+                        </td>
+                        <td>
+                          <span class="badge-status badge-ready">Active</span>
+                        </td>
+                        <td>
+                          <span
+                            class="badge"
+                            style="
+                              background: var(--peach-pale);
+                              color: var(--peach-dark);
+                            "
+                            >18 cakes</span
+                          >
+                        </td>
+                        <td>
+                          <div class="d-flex gap-1">
+                            <button
+                              class="btn btn-sm"
+                              style="
+                                background: var(--peach-pale);
+                                color: var(--peach-dark);
+                                border-radius: 6px;
+                              "
+                              onclick="editWeightClass(1)"
+                              title="Edit"
+                            >
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button
+                              class="btn btn-sm btn-outline-danger"
+                              style="border-radius: 6px"
+                              onclick="deleteWeightClass(1)"
+                              title="Delete"
+                            >
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <div
+                              style="
+                                width: 35px;
+                                height: 35px;
+                                background: var(--peach-pale);
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                              "
+                            >
+                              <i
+                                class="bi bi-2-circle-fill"
+                                style="color: var(--peach-dark)"
+                              ></i>
+                            </div>
+                            <strong>2 Pound Cake</strong>
+                          </div>
+                        </td>
+                        <td>2.00</td>
+                        <td>
+                          <span class="badge bg-light text-dark">Pound</span>
+                        </td>
+                        <td>
+                          <span class="badge-status badge-ready">Active</span>
+                        </td>
+                        <td>
+                          <span
+                            class="badge"
+                            style="
+                              background: var(--peach-pale);
+                              color: var(--peach-dark);
+                            "
+                            >22 cakes</span
+                          >
+                        </td>
+                        <td>
+                          <div class="d-flex gap-1">
+                            <button
+                              class="btn btn-sm"
+                              style="
+                                background: var(--peach-pale);
+                                color: var(--peach-dark);
+                                border-radius: 6px;
+                              "
+                              onclick="editWeightClass(2)"
+                              title="Edit"
+                            >
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button
+                              class="btn btn-sm btn-outline-danger"
+                              style="border-radius: 6px"
+                              onclick="deleteWeightClass(2)"
+                              title="Delete"
+                            >
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <div
+                              style="
+                                width: 35px;
+                                height: 35px;
+                                background: var(--peach-pale);
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                              "
+                            >
+                              <i
+                                class="bi bi-3-circle-fill"
+                                style="color: var(--peach-dark)"
+                              ></i>
+                            </div>
+                            <strong>3 Pound Cake</strong>
+                          </div>
+                        </td>
+                        <td>3.00</td>
+                        <td>
+                          <span class="badge bg-light text-dark">Pound</span>
+                        </td>
+                        <td>
+                          <span class="badge-status badge-ready">Active</span>
+                        </td>
+                        <td>
+                          <span
+                            class="badge"
+                            style="
+                              background: var(--peach-pale);
+                              color: var(--peach-dark);
+                            "
+                            >20 cakes</span
+                          >
+                        </td>
+                        <td>
+                          <div class="d-flex gap-1">
+                            <button
+                              class="btn btn-sm"
+                              style="
+                                background: var(--peach-pale);
+                                color: var(--peach-dark);
+                                border-radius: 6px;
+                              "
+                              onclick="editWeightClass(3)"
+                              title="Edit"
+                            >
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button
+                              class="btn btn-sm btn-outline-danger"
+                              style="border-radius: 6px"
+                              onclick="deleteWeightClass(3)"
+                              title="Delete"
+                            >
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <div
+                              style="
+                                width: 35px;
+                                height: 35px;
+                                background: var(--peach-pale);
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                              "
+                            >
+                              <i
+                                class="bi bi-4-circle-fill"
+                                style="color: var(--peach-dark)"
+                              ></i>
+                            </div>
+                            <strong>4 Pound Cake</strong>
+                          </div>
+                        </td>
+                        <td>4.00</td>
+                        <td>
+                          <span class="badge bg-light text-dark">Pound</span>
+                        </td>
+                        <td>
+                          <span class="badge-status badge-ready">Active</span>
+                        </td>
+                        <td>
+                          <span
+                            class="badge"
+                            style="
+                              background: var(--peach-pale);
+                              color: var(--peach-dark);
+                            "
+                            >14 cakes</span
+                          >
+                        </td>
+                        <td>
+                          <div class="d-flex gap-1">
+                            <button
+                              class="btn btn-sm"
+                              style="
+                                background: var(--peach-pale);
+                                color: var(--peach-dark);
+                                border-radius: 6px;
+                              "
+                              onclick="editWeightClass(4)"
+                              title="Edit"
+                            >
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button
+                              class="btn btn-sm btn-outline-danger"
+                              style="border-radius: 6px"
+                              onclick="deleteWeightClass(4)"
+                              title="Delete"
+                            >
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <div
+                              style="
+                                width: 35px;
+                                height: 35px;
+                                background: var(--peach-pale);
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                              "
+                            >
+                              <i
+                                class="bi bi-5-circle-fill"
+                                style="color: var(--peach-dark)"
+                              ></i>
+                            </div>
+                            <strong>5 Pound Cake</strong>
+                          </div>
+                        </td>
+                        <td>5.00</td>
+                        <td>
+                          <span class="badge bg-light text-dark">Pound</span>
+                        </td>
+                        <td>
+                          <span
+                            class="badge-status badge-pending"
+                            style="background: #fff3cd; color: #856404"
+                            >Inactive</span
+                          >
+                        </td>
+                        <td>
+                          <span
+                            class="badge"
+                            style="
+                              background: var(--peach-pale);
+                              color: var(--peach-dark);
+                            "
+                            >3 cakes</span
+                          >
+                        </td>
+                        <td>
+                          <div class="d-flex gap-1">
+                            <button
+                              class="btn btn-sm"
+                              style="
+                                background: var(--peach-pale);
+                                color: var(--peach-dark);
+                                border-radius: 6px;
+                              "
+                              onclick="editWeightClass(5)"
+                              title="Edit"
+                            >
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button
+                              class="btn btn-sm btn-outline-danger"
+                              style="border-radius: 6px"
+                              onclick="deleteWeightClass(5)"
+                              title="Delete"
+                            >
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Info Sidebar -->
+            <div class="col-lg-4">
+              <div
+                class="card mb-3"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-body">
+                  <h6 class="fw-bold">
+                    <i
+                      class="bi bi-info-circle me-2"
+                      style="color: var(--peach-dark)"
+                    ></i
+                    >About Weight Classes
+                  </h6>
+                  <p class="small text-muted mb-0">
+                    Weight classes define the size options for your cakes. Each
+                    cake can have different prices for different weight classes.
+                    For example, a Cream cake might cost:
+                  </p>
+                  <ul class="small text-muted mt-2 mb-0">
+                    <li>1 Pound: Rs. 1,800</li>
+                    <li>2 Pound: Rs. 3,500</li>
+                    <li>3 Pound: Rs. 5,000</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="card"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-body">
+                  <h6 class="fw-bold">
+                    <i
+                      class="bi bi-exclamation-triangle me-2"
+                      style="color: #ff9800"
+                    ></i
+                    >Important Note
+                  </h6>
+                  <p class="small text-muted mb-0">
+                    Deleting a weight class will also remove all associated
+                    pricing for cakes. Make sure to update your cakes before
+                    deleting any weight class that is currently in use.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weight Class Modal -->
+          <div class="modal fade" id="weightClassModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div
+                class="modal-content"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div
+                  class="modal-header"
+                  style="
+                    background: var(--peach-pale);
+                    border-radius: 16px 16px 0 0;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <h5 class="modal-title" id="weightClassModalTitle">
+                    <i class="bi bi-plus-circle me-2"></i>Add Weight Class
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form id="weightClassForm">
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold"
+                        >Weight Name *</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="weightName"
+                        placeholder="e.g., 1 Pound Cake"
+                        style="border-color: var(--peach-light)"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold"
+                        >Weight Value (in pounds) *</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="weightValue"
+                        placeholder="e.g., 1.00"
+                        step="0.01"
+                        min="0.5"
+                        max="20"
+                        style="border-color: var(--peach-light)"
+                        required
+                      />
+                      <small class="text-muted"
+                        >Enter the weight in pounds (e.g., 1, 1.5, 2)</small
+                      >
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold">Unit</label>
+                      <select
+                        class="form-select"
+                        id="weightUnit"
+                        style="border-color: var(--peach-light)"
+                      >
+                        <option value="Pound">Pound</option>
+                        <option value="Kg">Kilogram</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold">Status</label>
+                      <select
+                        class="form-select"
+                        id="weightStatus"
+                        style="border-color: var(--peach-light)"
+                      >
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="modal-footer"
+                  style="border-top: 1px solid var(--border-color)"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    style="border-radius: 8px"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn text-white"
+                    style="background: var(--peach-dark); border-radius: 8px"
+                    onclick="saveWeightClass()"
+                  >
+                    <i class="bi bi-check-lg me-1"></i>Save Weight Class
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Settings Content -->
         <div id="settingsContent" style="display: none">
           <div class="page-header">
-            <h4><i class="bi bi-gear me-2"></i>Settings</h4>
-            <p>Site configuration</p>
+            <div>
+              <h4><i class="bi bi-gear me-2"></i>Settings</h4>
+              <p>Configure your bakery website settings</p>
+            </div>
           </div>
-          <div class="card p-5 text-center text-muted">
-            <i class="bi bi-gear" style="font-size: 48px"></i>
-            <p class="mt-3">Settings page content will be built next</p>
+
+          <div class="row g-4">
+            <!-- General Settings -->
+            <div class="col-lg-8">
+              <div
+                class="card mb-4"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-header">
+                  <i
+                    class="bi bi-building me-2"
+                    style="color: var(--peach-dark)"
+                  ></i
+                  >General Information
+                </div>
+                <div class="card-body">
+                  <form id="generalSettingsForm">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >Site Name *</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          value="Bliss Bites Bakery"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">Tagline</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          value="Delicious homemade cakes for every occasion"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label fw-semibold"
+                          >Site Description</label
+                        >
+                        <textarea
+                          class="form-control"
+                          rows="3"
+                          style="border-color: var(--peach-light)"
+                        >
+Bliss Bites Bakery specializes in custom cream and fondant cakes for all occasions. We use the finest ingredients to create delicious and beautifully decorated cakes that make your celebrations memorable.</textarea
+                        >
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">Currency</label>
+                        <select
+                          class="form-select"
+                          style="border-color: var(--peach-light)"
+                        >
+                          <option selected>PKR - Pakistani Rupee</option>
+                          <option>USD - US Dollar</option>
+                          <option>GBP - British Pound</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >Currency Symbol</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          value="Rs."
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Contact Information -->
+              <div
+                class="card mb-4"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-header">
+                  <i
+                    class="bi bi-telephone me-2"
+                    style="color: var(--peach-dark)"
+                  ></i
+                  >Contact Information
+                </div>
+                <div class="card-body">
+                  <form id="contactSettingsForm">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >Phone Number *</label
+                        >
+                        <div class="input-group">
+                          <span
+                            class="input-group-text"
+                            style="
+                              background: var(--peach-pale);
+                              border-color: var(--peach-light);
+                            "
+                          >
+                            <i
+                              class="bi bi-telephone"
+                              style="color: var(--peach-dark)"
+                            ></i>
+                          </span>
+                          <input
+                            type="tel"
+                            class="form-control"
+                            value="0300-1234567"
+                            style="border-color: var(--peach-light)"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >WhatsApp Number</label
+                        >
+                        <div class="input-group">
+                          <span
+                            class="input-group-text"
+                            style="
+                              background: var(--peach-pale);
+                              border-color: var(--peach-light);
+                            "
+                          >
+                            <i
+                              class="bi bi-whatsapp"
+                              style="color: #25d366"
+                            ></i>
+                          </span>
+                          <input
+                            type="tel"
+                            class="form-control"
+                            value="0300-1234567"
+                            style="border-color: var(--peach-light)"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold"
+                          >Email Address</label
+                        >
+                        <div class="input-group">
+                          <span
+                            class="input-group-text"
+                            style="
+                              background: var(--peach-pale);
+                              border-color: var(--peach-light);
+                            "
+                          >
+                            <i
+                              class="bi bi-envelope"
+                              style="color: var(--peach-dark)"
+                            ></i>
+                          </span>
+                          <input
+                            type="email"
+                            class="form-control"
+                            value="info@blissbites.com"
+                            style="border-color: var(--peach-light)"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">City</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          value="Lahore"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label fw-semibold"
+                          >Complete Address</label
+                        >
+                        <textarea
+                          class="form-control"
+                          rows="2"
+                          style="border-color: var(--peach-light)"
+                        >
+Shop #45, Main Boulevard, Gulberg III, Lahore, Punjab, Pakistan</textarea
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Social Media Links -->
+              <div
+                class="card mb-4"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-header">
+                  <i
+                    class="bi bi-share me-2"
+                    style="color: var(--peach-dark)"
+                  ></i
+                  >Social Media Links
+                </div>
+                <div class="card-body">
+                  <form id="socialSettingsForm">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">
+                          <i
+                            class="bi bi-instagram me-1"
+                            style="color: #e1306c"
+                          ></i
+                          >Instagram URL
+                        </label>
+                        <input
+                          type="url"
+                          class="form-control"
+                          value="https://instagram.com/blissbitesbakery"
+                          placeholder="https://instagram.com/yourpage"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">
+                          <i
+                            class="bi bi-facebook me-1"
+                            style="color: #1877f2"
+                          ></i
+                          >Facebook URL
+                        </label>
+                        <input
+                          type="url"
+                          class="form-control"
+                          value=""
+                          placeholder="https://facebook.com/yourpage"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">
+                          <i class="bi bi-tiktok me-1"></i>TikTok URL
+                        </label>
+                        <input
+                          type="url"
+                          class="form-control"
+                          value=""
+                          placeholder="https://tiktok.com/@yourhandle"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fw-semibold">
+                          <i
+                            class="bi bi-youtube me-1"
+                            style="color: #ff0000"
+                          ></i
+                          >YouTube URL
+                        </label>
+                        <input
+                          type="url"
+                          class="form-control"
+                          value=""
+                          placeholder="https://youtube.com/@yourchannel"
+                          style="border-color: var(--peach-light)"
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar Settings -->
+            <div class="col-lg-4">
+              <!-- Logo Upload -->
+              <div
+                class="card mb-4"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-header">
+                  <i
+                    class="bi bi-image me-2"
+                    style="color: var(--peach-dark)"
+                  ></i
+                  >Site Logo
+                </div>
+                <div class="card-body text-center">
+                  <div
+                    class="mb-3 p-4 rounded-3"
+                    style="background: var(--peach-pale)"
+                  >
+                    <div
+                      style="
+                        width: 100px;
+                        height: 100px;
+                        background: linear-gradient(
+                          135deg,
+                          var(--peach-primary),
+                          var(--peach-dark)
+                        );
+                        border-radius: 20px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      <i
+                        class="bi bi-cup-hot-fill text-white"
+                        style="font-size: 40px"
+                      ></i>
+                    </div>
+                    <p class="small text-muted mb-0">Current Logo</p>
+                  </div>
+                  <input
+                    type="file"
+                    class="form-control mb-2"
+                    accept="image/*"
+                    style="border-color: var(--peach-light)"
+                  />
+                  <small class="text-muted">Recommended: 200x200px PNG</small>
+                </div>
+              </div>
+
+              <!-- Business Hours -->
+              <div
+                class="card mb-4"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-header">
+                  <i
+                    class="bi bi-clock me-2"
+                    style="color: var(--peach-dark)"
+                  ></i
+                  >Business Hours
+                </div>
+                <div class="card-body">
+                  <div class="mb-2 d-flex justify-content-between">
+                    <span class="small">Monday - Friday</span>
+                    <span class="small fw-semibold">9:00 AM - 8:00 PM</span>
+                  </div>
+                  <div class="mb-2 d-flex justify-content-between">
+                    <span class="small">Saturday</span>
+                    <span class="small fw-semibold">10:00 AM - 6:00 PM</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span class="small">Sunday</span>
+                    <span class="small fw-semibold" style="color: #e53e3e"
+                      >Closed</span
+                    >
+                  </div>
+                  <button
+                    class="btn btn-sm w-100 mt-3"
+                    style="
+                      background: var(--peach-pale);
+                      color: var(--peach-dark);
+                      border-radius: 8px;
+                    "
+                    onclick="alert('Business hours editor coming soon!')"
+                  >
+                    <i class="bi bi-pencil me-1"></i>Edit Hours
+                  </button>
+                </div>
+              </div>
+
+              <!-- Order Settings -->
+              <div
+                class="card mb-4"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <div class="card-header">
+                  <i
+                    class="bi bi-cart-check me-2"
+                    style="color: var(--peach-dark)"
+                  ></i
+                  >Order Settings
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold small"
+                      >Minimum Order Notice</label
+                    >
+                    <select
+                      class="form-select"
+                      style="border-color: var(--peach-light)"
+                    >
+                      <option>24 hours</option>
+                      <option selected>48 hours</option>
+                      <option>72 hours</option>
+                      <option>1 week</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold small"
+                      >Max Delivery Days Ahead</label
+                    >
+                    <select
+                      class="form-select"
+                      style="border-color: var(--peach-light)"
+                    >
+                      <option>7 days</option>
+                      <option>14 days</option>
+                      <option selected>30 days</option>
+                      <option>60 days</option>
+                    </select>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      checked
+                      style="border-color: var(--peach-dark)"
+                    />
+                    <label class="form-check-label small"
+                      >Send order confirmation SMS</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      checked
+                      style="border-color: var(--peach-dark)"
+                    />
+                    <label class="form-check-label small"
+                      >Send order status updates</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Save Button -->
+              <button
+                class="btn text-white w-100 py-3"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--peach-primary),
+                    var(--peach-dark)
+                  );
+                  border-radius: 12px;
+                  font-weight: 600;
+                "
+                onclick="saveAllSettings()"
+              >
+                <i class="bi bi-check-lg me-2"></i>Save All Settings
+              </button>
+            </div>
           </div>
         </div>
       </div>

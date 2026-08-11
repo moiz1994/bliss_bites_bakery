@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bliss Bites Bakery - Delicious Cakes for Every Occasion</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/user.css" />
+  </head>
+  <body>
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">
+          <div class="logo-icon">
+            <img src="../assets/images/logo.webp" alt="Bliss Bites Logo" />
+          </div>
+          <div class="brand-text">
+            <h5>Bliss Bites</h5>
+            <small>Bakery & Cakes</small>
+          </div>
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <i
+            class="bi bi-list"
+            style="font-size: 24px; color: var(--peach-dark)"
+          ></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cakes">Our Cakes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#categories">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-order">
+            <i class="bi bi-whatsapp me-2"></i>Order Now
+            <span
+              id="cartCount"
+              class="badge bg-white text-dark ms-1"
+              style="display: none"
+              >0</span
+            >
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 hero-content">
+            <h1>
+              Delicious Cakes <span>Made with Love</span> for Every Occasion
+            </h1>
+            <p>
+              From creamy delights to elegant fondant masterpieces, we craft
+              cakes that make your celebrations unforgettable.
+            </p>
+            <div>
+              <a href="#cakes" class="btn-hero"
+                ><i class="bi bi-cake2 me-2"></i>Explore Cakes</a
+              >
+              <a href="#" class="btn-outline-hero"
+                ><i class="bi bi-whatsapp me-2"></i>WhatsApp Order</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-6 hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=600&h=400&fit=crop"
+              alt="Beautiful Cake"
+              style="width: 100%; max-width: 500px; border-radius: 20px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="features-section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-egg-fried"></i></div>
+              <h5>Fresh Ingredients</h5>
+              <p>We use only the finest and freshest ingredients</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-truck"></i></div>
+              <h5>Free Delivery</h5>
+              <p>Free delivery on orders above Rs. 2,000</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-palette"></i></div>
+              <h5>Custom Designs</h5>
+              <p>Custom cake designs for your special occasion</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATEGORIES ============ -->
+    <section id="categories" style="padding: 60px 0">
+      <div class="container">
+        <div class="section-title">
+          <h2>Shop by Occasion</h2>
+          <p>Find the perfect cake for every special moment</p>
+        </div>
+        <div class="row g-4" id="categoriesGrid">
+          <!-- Categories will be loaded by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CAKES ============ -->
+    <section id="cakes" class="cakes-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Popular Cakes</h2>
+          <p>Handcrafted with love and the finest ingredients</p>
+        </div>
+
+        <div class="text-center mb-4">
+          <button
+            class="btn btn-sm mx-1 mb-2 filter-btn active"
+            style="
+              background: var(--peach-dark);
+              color: white;
+              border-radius: 20px;
+              padding: 8px 20px;
+            "
+            onclick="filterCakes('all', this)"
+          >
+            All
+          </button>
+          <button
+            class="btn btn-sm mx-1 mb-2 filter-btn"
+            style="
+              background: var(--peach-pale);
+              color: var(--peach-dark);
+              border-radius: 20px;
+              padding: 8px 20px;
+            "
+            onclick="filterCakes('cream', this)"
+          >
+            Cream Cakes
+          </button>
+          <button
+            class="btn btn-sm mx-1 mb-2 filter-btn"
+            style="
+              background: var(--peach-pale);
+              color: var(--peach-dark);
+              border-radius: 20px;
+              padding: 8px 20px;
+            "
+            onclick="filterCakes('fondant', this)"
+          >
+            Fondant Cakes
+          </button>
+        </div>
+
+        <div class="row g-4" id="cakesContainer">
+          <!-- Cakes will be loaded by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Order Your Dream Cake?</h2>
+        <p>Contact us on WhatsApp for custom orders and quick delivery.</p>
+        <a href="#" class="btn-cta"
+          ><i class="bi bi-whatsapp me-2"></i>Order on WhatsApp</a
+        >
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 10px;
+                  overflow: hidden;
+                "
+              >
+                <img
+                  src="../assets/images/logo.webp"
+                  alt="Logo"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+              <div>
+                <h6 class="mb-0 text-white">Bliss Bites Bakery</h6>
+                <small>Delicious cakes for every occasion</small>
+              </div>
+            </div>
+            <p class="small">
+              We specialize in cream and fondant cakes, custom-made for all your
+              celebrations.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4">
+            <h6>Quick Links</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2"><a href="#">Home</a></li>
+              <li class="mb-2"><a href="#cakes">Our Cakes</a></li>
+              <li class="mb-2"><a href="#categories">Categories</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-4">
+            <h6>Categories</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2"><a href="#">Birthday Cakes</a></li>
+              <li class="mb-2"><a href="#">Wedding Cakes</a></li>
+              <li class="mb-2"><a href="#">Cream Cakes</a></li>
+              <li class="mb-2"><a href="#">Fondant Cakes</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-4">
+            <h6>Contact Us</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2"></i>Gulberg III, Lahore
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-telephone me-2"></i>0300-1234567
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-envelope me-2"></i>info@blissbites.com
+              </li>
+              <li><i class="bi bi-clock me-2"></i>Mon-Sat: 9AM - 8PM</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="mb-0">
+            &copy; 2024 Bliss Bites Bakery. Made with
+            <i class="bi bi-heart-fill" style="color: var(--peach-dark)"></i> in
+            Pakistan
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/user.js"></script>
+    <script>
+      // Static data for cakes and categories
+      const staticData = {
+        categories: [
+          {
+            name: "Birthday",
+            icon: "bi-gift-fill",
+            count: 12,
+            gradient: "linear-gradient(135deg, #FFB5A7, #F08080)",
+          },
+          {
+            name: "Wedding",
+            icon: "bi-heart-fill",
+            count: 6,
+            gradient: "linear-gradient(135deg, #FCD5CE, #FF9B85)",
+          },
+          {
+            name: "Anniversary",
+            icon: "bi-calendar-heart-fill",
+            count: 4,
+            gradient: "linear-gradient(135deg, #FFD1D1, #FF8A80)",
+          },
+          {
+            name: "Baby Shower",
+            icon: "bi-balloon-heart-fill",
+            count: 2,
+            gradient: "linear-gradient(135deg, #FFE0E0, #FFB5A7)",
+          },
+          {
+            name: "Custom",
+            icon: "bi-star-fill",
+            count: 5,
+            gradient: "linear-gradient(135deg, #E8F5E9, #A5D6A7)",
+          },
+          {
+            name: "Eid Special",
+            icon: "bi-moon-stars-fill",
+            count: 3,
+            gradient: "linear-gradient(135deg, #FFF9C4, #FFD54F)",
+          },
+        ],
+        cakes: [
+          {
+            name: "Chocolate Fudge Cake",
+            type: "cream",
+            category: "Birthday",
+            price: 1800,
+            image:
+              "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop",
+            desc: "Rich chocolate with creamy fudge frosting",
+          },
+          {
+            name: "Elegant Wedding Cake",
+            type: "fondant",
+            category: "Wedding",
+            price: 8500,
+            image:
+              "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=400&h=300&fit=crop",
+            desc: "Three-tier fondant with floral details",
+          },
+          {
+            name: "Red Velvet Dream",
+            type: "cream",
+            category: "Anniversary",
+            price: 2200,
+            image:
+              "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop",
+            desc: "Classic red velvet with cream cheese",
+          },
+          {
+            name: "Pineapple Cream Cake",
+            type: "cream",
+            category: "Birthday",
+            price: 1600,
+            image:
+              "https://images.unsplash.com/photo-1562440499-64c9a111f713?w=400&h=300&fit=crop",
+            desc: "Light cake with fresh pineapple",
+          },
+          {
+            name: "Fondant Birthday Cake",
+            type: "fondant",
+            category: "Birthday",
+            price: 4500,
+            image:
+              "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=300&fit=crop",
+            desc: "Custom themed with edible toppers",
+          },
+          {
+            name: "Strawberry Cream Cake",
+            type: "cream",
+            category: "Baby Shower",
+            price: 2000,
+            image:
+              "https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&h=300&fit=crop",
+            desc: "Fresh strawberries with cream layers",
+          },
+          {
+            name: "Black Forest Cake",
+            type: "cream",
+            category: "Birthday",
+            price: 2500,
+            image:
+              "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400&h=300&fit=crop",
+            desc: "Chocolate layers with cherry filling",
+          },
+          {
+            name: "Fondant Anniversary Cake",
+            type: "fondant",
+            category: "Anniversary",
+            price: 6500,
+            image:
+              "https://images.unsplash.com/photo-1562777717-dc6984f65a63?w=400&h=300&fit=crop",
+            desc: "Elegant design with gold accents",
+          },
+        ],
+      };
+
+      // Render categories
+      function renderCategories() {
+        const grid = document.getElementById("categoriesGrid");
+        grid.innerHTML = staticData.categories
+          .map(
+            (cat) => `
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="category-card">
+                        <div class="cat-icon" style="background: ${cat.gradient};">
+                            <i class="bi ${cat.icon}"></i>
+                        </div>
+                        <div class="card-body">
+                            <h6>${cat.name}</h6>
+                            <small class="text-muted">${cat.count} cakes</small>
+                        </div>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      // Render cakes
+      function renderCakes() {
+        const container = document.getElementById("cakesContainer");
+        container.innerHTML = staticData.cakes
+          .map(
+            (cake) => `
+                <div class="col-lg-3 col-md-6 cake-item" data-type="${cake.type}">
+                    <div class="cake-card">
+                        <div class="position-relative">
+                            <img src="${cake.image}" class="cake-img" alt="${cake.name}">
+                            <span class="cake-badge ${cake.type}">${cake.type.charAt(0).toUpperCase() + cake.type.slice(1)}</span>
+                        </div>
+                        <div class="card-body">
+                            <small class="text-muted">${cake.category}</small>
+                            <h6>${cake.name}</h6>
+                            <p class="small text-muted">${cake.desc}</p>
+                            <div class="price">Rs. ${cake.price.toLocaleString()} <small>onwards</small></div>
+                            <button class="btn-cart" onclick="addToCart('${cake.name}', ${cake.price})">
+                                <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", () => {
+        renderCategories();
+        renderCakes();
+        updateCartCount();
+      });
+    </script>
+  </body>
+</html>
