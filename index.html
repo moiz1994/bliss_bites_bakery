@@ -16,7 +16,9 @@
       rel="stylesheet"
     />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/user.css" />
+    <link rel="stylesheet" href="assets/css/user.css" />
+
+    <link rel="icon" href="assets/images/logo.webp" type="image/webp" />
   </head>
   <body>
     <!-- ============ NAVBAR ============ -->
@@ -24,7 +26,7 @@
       <div class="container">
         <a href="#" class="navbar-brand">
           <div class="logo-icon">
-            <img src="../assets/images/logo.webp" alt="Bliss Bites Logo" />
+            <img src="assets/images/logo.webp" alt="Bliss Bites Logo" />
           </div>
           <div class="brand-text">
             <h5>Bliss Bites</h5>
@@ -50,6 +52,9 @@
               <a class="nav-link active" href="#">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link active" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#cakes">Our Cakes</a>
             </li>
             <li class="nav-item">
@@ -59,8 +64,15 @@
               <a class="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
-          <a href="#" class="btn btn-order">
-            <i class="bi bi-whatsapp me-2"></i>Order Now
+          <a
+            href="#"
+            class="btn btn-order"
+            onclick="
+              openCartSidebar();
+              return false;
+            "
+          >
+            <i class="bi bi-cart me-2"></i>Cart
             <span
               id="cartCount"
               class="badge bg-white text-dark ms-1"
@@ -288,10 +300,43 @@
       </div>
     </footer>
 
+    <!-- ============ CART SIDEBAR OVERLAY ============ -->
+    <div
+      class="cart-overlay"
+      id="cartOverlay"
+      onclick="closeCartSidebar()"
+    ></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-sidebar-header">
+        <h5><i class="bi bi-cart me-2"></i>Your Cart</h5>
+        <button class="cart-close-btn" onclick="closeCartSidebar()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="cart-sidebar-body" id="cartSidebarBody">
+        <!-- Cart items rendered by JS -->
+      </div>
+
+      <div class="cart-sidebar-footer">
+        <div class="cart-sidebar-subtotal">
+          <span>Subtotal:</span>
+          <span class="amount" id="cartSidebarSubtotal">Rs. 0</span>
+        </div>
+        <a href="checkout.html" class="btn-checkout">
+          <i class="bi bi-bag-check me-2"></i>Proceed to Checkout
+        </a>
+        <button class="btn-continue" onclick="closeCartSidebar()">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="../assets/js/user.js"></script>
+    <script src="assets/js/user.js"></script>
     <script>
       // Static data for cakes and categories
       const staticData = {
@@ -431,30 +476,44 @@
           .join("");
       }
 
-      // Render cakes
+      // Render cakes - Update this function in index.html
       function renderCakes() {
         const container = document.getElementById("cakesContainer");
         container.innerHTML = staticData.cakes
           .map(
             (cake) => `
-                <div class="col-lg-3 col-md-6 cake-item" data-type="${cake.type}">
-                    <div class="cake-card">
-                        <div class="position-relative">
-                            <img src="${cake.image}" class="cake-img" alt="${cake.name}">
-                            <span class="cake-badge ${cake.type}">${cake.type.charAt(0).toUpperCase() + cake.type.slice(1)}</span>
-                        </div>
-                        <div class="card-body">
-                            <small class="text-muted">${cake.category}</small>
-                            <h6>${cake.name}</h6>
-                            <p class="small text-muted">${cake.desc}</p>
-                            <div class="price">Rs. ${cake.price.toLocaleString()} <small>onwards</small></div>
-                            <button class="btn-cart" onclick="addToCart('${cake.name}', ${cake.price})">
-                                <i class="bi bi-cart-plus me-2"></i>Add to Cart
-                            </button>
-                        </div>
+        <div class="col-lg-3 col-md-6 cake-item" data-type="${cake.type}">
+            <div class="cake-card">
+                <div class="position-relative">
+                    <a href="cake-details.html?cake=${encodeURIComponent(cake.name)}">
+                        <img src="${cake.image}" class="cake-img" alt="${cake.name}">
+                    </a>
+                    <span class="cake-badge ${cake.type}">${cake.type.charAt(0).toUpperCase() + cake.type.slice(1)}</span>
+                </div>
+                <div class="card-body">
+                    <small class="text-muted">${cake.category}</small>
+                    <h6>
+                        <a href="cake-details.html?cake=${encodeURIComponent(cake.name)}" 
+                           style="color: var(--text-dark); text-decoration: none;">
+                            ${cake.name}
+                        </a>
+                    </h6>
+                    <p class="small text-muted">${cake.desc}</p>
+                    <div class="price">Rs. ${cake.price.toLocaleString()} <small>onwards</small></div>
+                    <div class="d-flex gap-2">
+                        <button class="btn-cart" onclick="event.preventDefault(); addToCart('${cake.name}', ${cake.price})" style="flex: 2;">
+                            <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                        </button>
+                        <a href="cake-details.html?cake=${encodeURIComponent(cake.name)}" 
+                           class="btn btn-sm" 
+                           style="flex: 1; background: var(--white); color: var(--peach-dark); border: 1px solid var(--peach-light); border-radius: 10px; padding: 10px; font-weight: 600; text-decoration: none; text-align: center;">
+                            <i class="bi bi-eye"></i>
+                        </a>
                     </div>
                 </div>
-            `,
+            </div>
+        </div>
+    `,
           )
           .join("");
       }

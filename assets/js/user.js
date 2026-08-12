@@ -111,3 +111,153 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   document.head.appendChild(style);
 });
+
+// ============ CART SIDEBAR FUNCTIONS ============
+const mockCartImages = {
+  "Chocolate Fudge Cake":
+    "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=60&h=60&fit=crop",
+  "Elegant Wedding Cake":
+    "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=60&h=60&fit=crop",
+  "Red Velvet Dream":
+    "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=60&h=60&fit=crop",
+  "Pineapple Cream Cake":
+    "https://images.unsplash.com/photo-1562440499-64c9a111f713?w=60&h=60&fit=crop",
+  "Fondant Birthday Cake":
+    "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=60&h=60&fit=crop",
+  "Strawberry Cream Cake":
+    "https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=60&h=60&fit=crop",
+  "Black Forest Cake":
+    "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=60&h=60&fit=crop",
+  "Fondant Anniversary Cake":
+    "https://images.unsplash.com/photo-1562777717-dc6984f65a63?w=60&h=60&fit=crop",
+};
+
+function openCartSidebar() {
+  const overlay = document.getElementById("cartOverlay");
+  const sidebar = document.getElementById("cartSidebar");
+
+  if (overlay && sidebar) {
+    renderCartSidebar();
+    overlay.classList.add("show");
+    sidebar.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeCartSidebar() {
+  const overlay = document.getElementById("cartOverlay");
+  const sidebar = document.getElementById("cartSidebar");
+
+  if (overlay && sidebar) {
+    overlay.classList.remove("show");
+    sidebar.classList.remove("open");
+    document.body.style.overflow = "auto";
+  }
+}
+
+function renderCartSidebar() {
+  const cartBody = document.getElementById("cartSidebarBody");
+  const subtotalElement = document.getElementById("cartSidebarSubtotal");
+
+  if (!cartBody) return;
+
+  let cart = JSON.parse(localStorage.getItem("blissBitesCart")) || [];
+
+  if (cart.length === 0) {
+    cartBody.innerHTML = `
+            <div class="cart-sidebar-empty">
+                <i class="bi bi-cart-x"></i>
+                <h6>Your cart is empty</h6>
+                <p class="small">Add some delicious cakes to your cart!</p>
+            </div>
+        `;
+    if (subtotalElement) subtotalElement.textContent = "Rs. 0";
+    return;
+  }
+
+  cartBody.innerHTML = cart
+    .map(
+      (item, index) => `
+        <div class="cart-sidebar-item">
+            <img src="${mockCartImages[item.name] || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=60&h=60&fit=crop"}" 
+                 class="cart-sidebar-item-img" alt="${item.name}">
+            <div class="cart-sidebar-item-details">
+                <h6>${item.name}</h6>
+                <small>${item.weight || "1 Pound"}</small>
+                <div class="cart-qty-controls mt-2">
+                    <button class="cart-qty-btn" onclick="updateCartItemQty(${index}, -1)">-</button>
+                    <span class="cart-qty-value">${item.quantity}</span>
+                    <button class="cart-qty-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
+                </div>
+            </div>
+            <div class="text-end">
+                <div class="cart-sidebar-item-price">Rs. ${(item.price * item.quantity).toLocaleString()}</div>
+                <button class="cart-sidebar-item-remove" onclick="removeCartItemSidebar(${index})" title="Remove">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </div>
+    `,
+    )
+    .join("");
+
+  // Update subtotal
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+  if (subtotalElement)
+    subtotalElement.textContent = "Rs. " + subtotal.toLocaleString();
+
+  updateCartCount();
+}
+
+function updateCartItemQty(index, delta) {
+  let cart = JSON.parse(localStorage.getItem("blissBitesCart")) || [];
+
+  if (index >= 0 && index < cart.length) {
+    cart[index].quantity += delta;
+
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
+    }
+
+    localStorage.setItem("blissBitesCart", JSON.stringify(cart));
+    renderCartSidebar();
+  }
+}
+
+function removeCartItemSidebar(index) {
+  let cart = JSON.parse(localStorage.getItem("blissBitesCart")) || [];
+
+  if (index >= 0 && index < cart.length) {
+    const removedItem = cart[index];
+    cart.splice(index, 1);
+    localStorage.setItem("blissBitesCart", JSON.stringify(cart));
+    renderCartSidebar();
+    showToast(removedItem.name + " removed from cart");
+  }
+}
+
+// Update existing addToCart function to open sidebar
+function addToCart(cakeName, price) {
+  const existingItem = cart.find((item) => item.name === cakeName);
+
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cart.push({
+      name: cakeName,
+      price: price,
+      quantity: 1,
+      weight: "1 Pound",
+    });
+  }
+
+  localStorage.setItem("blissBitesCart", JSON.stringify(cart));
+  updateCartCount();
+  showToast(cakeName + " added to cart!");
+
+  // Open cart sidebar
+  openCartSidebar();
+}

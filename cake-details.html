@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cake Details - Bliss Bites Bakery</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/user.css" />
+    <link rel="icon" href="assets/images/logo.webp" type="image/webp" />
+  </head>
+  <body>
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">
+          <div class="logo-icon">
+            <img src="assets/images/logo.webp" alt="Bliss Bites Logo" />
+          </div>
+          <div class="brand-text">
+            <h5>Bliss Bites</h5>
+            <small>Bakery & Cakes</small>
+          </div>
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <i
+            class="bi bi-list"
+            style="font-size: 24px; color: var(--peach-dark)"
+          ></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#cakes">Our Cakes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#categories">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contact">Contact</a>
+            </li>
+          </ul>
+          <a
+            href="#"
+            class="btn btn-order"
+            onclick="
+              openCartSidebar();
+              return false;
+            "
+          >
+            <i class="bi bi-cart me-2"></i>Cart
+            <span
+              id="cartCount"
+              class="badge bg-white text-dark ms-1"
+              style="display: none"
+              >0</span
+            >
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============ BREADCRUMB ============ -->
+    <div class="breadcrumb-section">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="mx-2">/</span>
+          <a href="index.html#cakes">Cakes</a>
+          <span class="mx-2">/</span>
+          <span class="active">Chocolate Fudge Cake</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ============ CAKE DETAILS ============ -->
+    <div class="container mb-5">
+      <div class="row g-4">
+        <!-- Cake Image -->
+        <div class="col-lg-6">
+          <div class="cake-image-container">
+            <img
+              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=400&fit=crop"
+              alt="Chocolate Fudge Cake"
+              id="cakeImage"
+            />
+            <span
+              class="cake-badge-lg"
+              id="cakeTypeBadge"
+              style="background: var(--peach-dark)"
+              >Cream</span
+            >
+          </div>
+        </div>
+
+        <!-- Cake Info -->
+        <div class="col-lg-6 cake-details-content">
+          <h2 id="cakeName">Chocolate Fudge Cake</h2>
+
+          <div class="d-flex align-items-center gap-2 mt-2">
+            <span class="rating-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </span>
+            <span class="rating-text">(4.5/5 - 24 reviews)</span>
+          </div>
+
+          <p class="text-muted mt-3" id="cakeDescription">
+            Indulge in our rich and moist chocolate fudge cake, layered with
+            creamy chocolate fudge frosting and topped with chocolate shavings.
+            Perfect for chocolate lovers and guaranteed to make your celebration
+            extra special.
+          </p>
+
+          <!-- Price Display -->
+          <div class="price-display">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <small class="text-muted">Selected Price:</small>
+                <div class="current-price" id="currentPrice">Rs. 1,800</div>
+              </div>
+              <div class="text-end">
+                <small class="text-muted">Weight:</small>
+                <div class="fw-bold" id="selectedWeightLabel">1 Pound</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weight Selection -->
+          <label class="fw-bold mb-2">Select Weight:</label>
+          <div class="weight-selector" id="weightSelector">
+            <div
+              class="weight-option selected"
+              data-weight="1 Pound"
+              data-price="1800"
+              onclick="selectWeight(this)"
+            >
+              <div class="weight-label">1 Pound</div>
+              <div class="weight-price">Rs. 1,800</div>
+            </div>
+            <div
+              class="weight-option"
+              data-weight="2 Pound"
+              data-price="3500"
+              onclick="selectWeight(this)"
+            >
+              <div class="weight-label">2 Pound</div>
+              <div class="weight-price">Rs. 3,500</div>
+            </div>
+            <div
+              class="weight-option"
+              data-weight="3 Pound"
+              data-price="5000"
+              onclick="selectWeight(this)"
+            >
+              <div class="weight-label">3 Pound</div>
+              <div class="weight-price">Rs. 5,000</div>
+            </div>
+            <div
+              class="weight-option"
+              data-weight="4 Pound"
+              data-price="6500"
+              onclick="selectWeight(this)"
+            >
+              <div class="weight-label">4 Pound</div>
+              <div class="weight-price">Rs. 6,500</div>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="quantity-selector">
+            <label class="fw-bold">Quantity:</label>
+            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+            <input
+              type="text"
+              class="quantity-input"
+              id="quantity"
+              value="1"
+              readonly
+            />
+            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+          </div>
+
+          <!-- Action Buttons -->
+          <button class="btn-add-to-cart" onclick="addToCartFromDetails()">
+            <i class="bi bi-cart-plus me-2"></i>Add to Cart
+          </button>
+
+          <!-- View Cart & Checkout button (hidden initially) -->
+          <a href="checkout.html" class="btn-view-cart" id="viewCartBtn">
+            <i class="bi bi-cart-check me-2"></i>View Cart & Checkout
+          </a>
+
+          <button class="btn-whatsapp-order" onclick="orderViaWhatsApp()">
+            <i class="bi bi-whatsapp me-2"></i>Order via WhatsApp
+          </button>
+          <!-- Additional Info -->
+          <ul class="info-list mt-4">
+            <li>
+              <i class="bi bi-clock"></i>
+              <strong>Preparation Time:</strong>
+              <span id="prepTime">4-5 hours</span>
+            </li>
+            <li>
+              <i class="bi bi-tag"></i>
+              <strong>Category:</strong>
+              <span id="cakeCategory">Birthday</span>
+            </li>
+            <li>
+              <i class="bi bi-egg-fried"></i>
+              <strong>Flavor:</strong>
+              <span id="cakeFlavor">Chocolate</span>
+            </li>
+            <li>
+              <i class="bi bi-truck"></i>
+              <strong>Delivery:</strong>
+              Free delivery on orders above Rs. 2,000
+            </li>
+          </ul>
+
+          <!-- Ingredients -->
+          <div class="mt-4">
+            <h6 class="fw-bold">
+              <i class="bi bi-list-check me-2"></i>Ingredients
+            </h6>
+            <p class="text-muted small" id="cakeIngredients">
+              Flour, Sugar, Eggs, Butter, Cocoa Powder, Dark Chocolate, Fresh
+              Cream, Vanilla Extract, Baking Powder, Chocolate Shavings
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Divider -->
+      <div class="section-divider"></div>
+
+      <!-- Related Cakes -->
+      <div class="section-title">
+        <h2>You May Also Like</h2>
+        <p>Similar cakes you might be interested in</p>
+      </div>
+
+      <div class="row g-4" id="relatedCakes">
+        <!-- Related Cake 1 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="related-cake-card">
+            <img
+              src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop"
+              alt="Red Velvet"
+            />
+            <div class="card-body">
+              <small class="text-muted">Anniversary</small>
+              <h6 class="fw-bold mb-1">Red Velvet Dream</h6>
+              <div class="price">Rs. 2,200 <small>onwards</small></div>
+              <a
+                href="#"
+                class="btn btn-sm w-100"
+                style="
+                  background: var(--peach-pale);
+                  color: var(--peach-dark);
+                  border-radius: 8px;
+                "
+                onclick="loadCake('Red Velvet Dream')"
+                >View Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Cake 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="related-cake-card">
+            <img
+              src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400&h=300&fit=crop"
+              alt="Black Forest"
+            />
+            <div class="card-body">
+              <small class="text-muted">Birthday</small>
+              <h6 class="fw-bold mb-1">Black Forest Cake</h6>
+              <div class="price">Rs. 2,500 <small>onwards</small></div>
+              <a
+                href="#"
+                class="btn btn-sm w-100"
+                style="
+                  background: var(--peach-pale);
+                  color: var(--peach-dark);
+                  border-radius: 8px;
+                "
+                onclick="loadCake('Black Forest Cake')"
+                >View Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Cake 3 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="related-cake-card">
+            <img
+              src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=400&h=300&fit=crop"
+              alt="Pineapple"
+            />
+            <div class="card-body">
+              <small class="text-muted">Birthday</small>
+              <h6 class="fw-bold mb-1">Pineapple Cream Cake</h6>
+              <div class="price">Rs. 1,600 <small>onwards</small></div>
+              <a
+                href="#"
+                class="btn btn-sm w-100"
+                style="
+                  background: var(--peach-pale);
+                  color: var(--peach-dark);
+                  border-radius: 8px;
+                "
+                onclick="loadCake('Pineapple Cream Cake')"
+                >View Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Cake 4 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="related-cake-card">
+            <img
+              src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=300&fit=crop"
+              alt="Fondant Birthday"
+            />
+            <div class="card-body">
+              <small class="text-muted">Birthday</small>
+              <h6 class="fw-bold mb-1">Fondant Birthday Cake</h6>
+              <div class="price">Rs. 4,500 <small>onwards</small></div>
+              <a
+                href="#"
+                class="btn btn-sm w-100"
+                style="
+                  background: var(--peach-pale);
+                  color: var(--peach-dark);
+                  border-radius: 8px;
+                "
+                onclick="loadCake('Fondant Birthday Cake')"
+                >View Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CTA SECTION ============ -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Need Help Choosing?</h2>
+        <p>
+          Our cake experts are here to help you pick the perfect cake for your
+          occasion.
+        </p>
+        <a href="#" class="btn-cta"
+          ><i class="bi bi-whatsapp me-2"></i>Chat with Us</a
+        >
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 10px;
+                  overflow: hidden;
+                "
+              >
+                <img
+                  src="assets/images/logo.webp"
+                  alt="Logo"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+              <div>
+                <h6 class="mb-0 text-white">Bliss Bites Bakery</h6>
+                <small>Delicious cakes for every occasion</small>
+              </div>
+            </div>
+            <p class="small">
+              We specialize in cream and fondant cakes, custom-made for all your
+              celebrations.
+            </p>
+          </div>
+          <div class="col-lg-3 col-md-4">
+            <h6>Quick Links</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2"><a href="index.html">Home</a></li>
+              <li class="mb-2"><a href="index.html#cakes">Our Cakes</a></li>
+              <li class="mb-2">
+                <a href="index.html#categories">Categories</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-4">
+            <h6>Contact Us</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2"></i>Gulberg III, Lahore
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-telephone me-2"></i>0300-1234567
+              </li>
+              <li><i class="bi bi-clock me-2"></i>Mon-Sat: 9AM - 8PM</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="mb-0">
+            &copy; 2024 Bliss Bites Bakery. Made with
+            <i class="bi bi-heart-fill" style="color: var(--peach-dark)"></i> in
+            Pakistan
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ============ CART SIDEBAR OVERLAY ============ -->
+    <div
+      class="cart-overlay"
+      id="cartOverlay"
+      onclick="closeCartSidebar()"
+    ></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-sidebar-header">
+        <h5><i class="bi bi-cart me-2"></i>Your Cart</h5>
+        <button class="cart-close-btn" onclick="closeCartSidebar()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="cart-sidebar-body" id="cartSidebarBody">
+        <!-- Cart items rendered by JS -->
+      </div>
+
+      <div class="cart-sidebar-footer">
+        <div class="cart-sidebar-subtotal">
+          <span>Subtotal:</span>
+          <span class="amount" id="cartSidebarSubtotal">Rs. 0</span>
+        </div>
+        <a href="checkout.html" class="btn-checkout">
+          <i class="bi bi-bag-check me-2"></i>Proceed to Checkout
+        </a>
+        <button class="btn-continue" onclick="closeCartSidebar()">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/user.js"></script>
+
+    <script>
+      // ============ CAKE DETAILS PAGE LOGIC ============
+      let selectedWeight = "1 Pound";
+      let selectedPrice = 1800;
+      let selectedQuantity = 1;
+
+      // Static cake data
+      const cakeData = {
+        "Chocolate Fudge Cake": {
+          name: "Chocolate Fudge Cake",
+          type: "Cream",
+          category: "Birthday",
+          flavor: "Chocolate",
+          prepTime: "4-5 hours",
+          description:
+            "Indulge in our rich and moist chocolate fudge cake, layered with creamy chocolate fudge frosting and topped with chocolate shavings.",
+          ingredients:
+            "Flour, Sugar, Eggs, Butter, Cocoa Powder, Dark Chocolate, Fresh Cream, Vanilla Extract, Baking Powder, Chocolate Shavings",
+          image:
+            "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=400&fit=crop",
+          weights: [
+            { label: "1 Pound", price: 1800 },
+            { label: "2 Pound", price: 3500 },
+            { label: "3 Pound", price: 5000 },
+            { label: "4 Pound", price: 6500 },
+          ],
+        },
+        "Red Velvet Dream": {
+          name: "Red Velvet Dream",
+          type: "Cream",
+          category: "Anniversary",
+          flavor: "Red Velvet",
+          prepTime: "3-4 hours",
+          description:
+            "Classic red velvet with cream cheese frosting, decorated with red crumbs.",
+          ingredients:
+            "Flour, Sugar, Eggs, Butter, Cocoa Powder, Red Food Color, Cream Cheese, Vanilla Extract",
+          image:
+            "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&h=400&fit=crop",
+          weights: [
+            { label: "1 Pound", price: 2200 },
+            { label: "2 Pound", price: 4000 },
+            { label: "3 Pound", price: 5800 },
+          ],
+        },
+      };
+
+      // ============ LOAD CAKE FROM URL PARAMETER ============
+      function getCakeFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const cakeName = urlParams.get("cake");
+
+        if (cakeName && cakeData[cakeName]) {
+          loadCake(cakeName);
+        } else if (cakeName) {
+          // If cake not in static data, use default
+          console.log("Cake not found, showing default");
+        }
+      }
+
+      // Call on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        updateCartCount();
+        getCakeFromUrl();
+      });
+
+      function selectWeight(element) {
+        // Remove selected class from all
+        document.querySelectorAll(".weight-option").forEach((opt) => {
+          opt.classList.remove("selected");
+        });
+
+        // Add selected class to clicked
+        element.classList.add("selected");
+
+        // Update selected values
+        selectedWeight = element.dataset.weight;
+        selectedPrice = parseInt(element.dataset.price);
+
+        // Update display
+        document.getElementById("currentPrice").textContent =
+          "Rs. " + selectedPrice.toLocaleString();
+        document.getElementById("selectedWeightLabel").textContent =
+          selectedWeight;
+      }
+
+      function changeQuantity(delta) {
+        selectedQuantity = Math.max(1, selectedQuantity + delta);
+        document.getElementById("quantity").value = selectedQuantity;
+      }
+
+      function addToCartFromDetails() {
+        const cakeName = document.getElementById("cakeName").textContent;
+
+        // Get existing cart
+        let cart = JSON.parse(localStorage.getItem("blissBitesCart")) || [];
+
+        // Check if item already exists
+        const existingIndex = cart.findIndex(
+          (item) => item.name === cakeName && item.weight === selectedWeight,
+        );
+
+        if (existingIndex > -1) {
+          cart[existingIndex].quantity += selectedQuantity;
+        } else {
+          cart.push({
+            name: cakeName,
+            price: selectedPrice,
+            weight: selectedWeight,
+            quantity: selectedQuantity,
+          });
+        }
+
+        localStorage.setItem("blissBitesCart", JSON.stringify(cart));
+        updateCartCount();
+        showToast(cakeName + " (" + selectedWeight + ") added to cart!");
+
+        // Show the View Cart button
+        const viewCartBtn = document.getElementById("viewCartBtn");
+        if (viewCartBtn) {
+          viewCartBtn.style.display = "block";
+        }
+      }
+
+      function orderViaWhatsApp() {
+        const cakeName = document.getElementById("cakeName").textContent;
+        const message =
+          `Hello Bliss Bites Bakery! I want to order:\n\n` +
+          `🎂 Cake: ${cakeName}\n` +
+          `⚖️ Weight: ${selectedWeight}\n` +
+          `🔢 Quantity: ${selectedQuantity}\n` +
+          `💰 Price: Rs. ${(selectedPrice * selectedQuantity).toLocaleString()}\n\n` +
+          `Please confirm my order.`;
+
+        const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+      function loadCake(cakeName) {
+        const data = cakeData[cakeName];
+        if (!data) return;
+
+        // Update page content
+        document.getElementById("cakeName").textContent = data.name;
+        document.getElementById("cakeDescription").textContent =
+          data.description;
+        document.getElementById("cakeCategory").textContent = data.category;
+        document.getElementById("cakeFlavor").textContent = data.flavor;
+        document.getElementById("prepTime").textContent = data.prepTime;
+        document.getElementById("cakeIngredients").textContent =
+          data.ingredients;
+        document.getElementById("cakeImage").src = data.image;
+
+        // Update type badge
+        const badge = document.getElementById("cakeTypeBadge");
+        badge.textContent = data.type;
+        badge.style.background =
+          data.type === "Cream" ? "var(--peach-dark)" : "#FF9800";
+
+        // Update weight options
+        const weightSelector = document.getElementById("weightSelector");
+        weightSelector.innerHTML = data.weights
+          .map(
+            (w, index) => `
+                <div class="weight-option ${index === 0 ? "selected" : ""}" 
+                     data-weight="${w.label}" 
+                     data-price="${w.price}" 
+                     onclick="selectWeight(this)">
+                    <div class="weight-label">${w.label}</div>
+                    <div class="weight-price">Rs. ${w.price.toLocaleString()}</div>
+                </div>
+            `,
+          )
+          .join("");
+
+        // Reset to first weight
+        selectedWeight = data.weights[0].label;
+        selectedPrice = data.weights[0].price;
+        document.getElementById("currentPrice").textContent =
+          "Rs. " + selectedPrice.toLocaleString();
+        document.getElementById("selectedWeightLabel").textContent =
+          selectedWeight;
+
+        // Update breadcrumb
+        document.querySelector(".breadcrumb .active").textContent = data.name;
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Initialize cart count
+      document.addEventListener("DOMContentLoaded", () => {
+        updateCartCount();
+      });
+    </script>
+  </body>
+</html>
