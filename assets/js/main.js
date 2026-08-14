@@ -22,55 +22,6 @@ overlay.addEventListener("click", () => {
   overlay.classList.remove("show");
 });
 
-// ============ PAGE NAVIGATION ============
-function showPage(pageName) {
-  // Map page names to content div IDs
-  const pageMap = {
-    dashboard: "dashboardContent",
-    orders: "ordersContent",
-    cakes: "cakesContent",
-    categories: "categoriesContent",
-    "weight-classes": "weightClassesContent",
-    settings: "settingsContent",
-  };
-
-  // Hide all content divs
-  Object.values(pageMap).forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = "none";
-  });
-
-  // Show selected content
-  const targetId = pageMap[pageName];
-  if (targetId) {
-    const target = document.getElementById(targetId);
-    if (target) target.style.display = "block";
-  }
-
-  // Update active nav link
-  document.querySelectorAll(".sidebar-nav .nav-link").forEach((link) => {
-    link.classList.remove("active");
-    if (link.dataset.page === pageName) {
-      link.classList.add("active");
-    }
-  });
-
-  // Close sidebar on mobile after navigation
-  if (window.innerWidth <= 991) {
-    sidebar.classList.remove("mobile-show");
-    overlay.classList.remove("show");
-  }
-}
-
-// Add click handlers to all nav links
-document.querySelectorAll(".sidebar-nav .nav-link").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const page = link.dataset.page;
-    if (page) showPage(page);
-  });
-});
-
 // ============ RESPONSIVE HANDLING ============
 window.addEventListener("resize", () => {
   if (window.innerWidth > 991) {
