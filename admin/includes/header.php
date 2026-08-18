@@ -1,5 +1,16 @@
 <?php
 // ============ HEADER INCLUDE ============
+// Start session and check authentication
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+// Redirect to login if not authenticated
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+  header('Location: index.php');
+  exit();
+}
+
 // Contains HTML head, opening body, sidebar, and topnav
 // Usage: $pageTitle must be set before including this file
 if (!isset($pageTitle)) {
@@ -20,6 +31,8 @@ if (!isset($pageTitle)) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Admin CSS -->
   <link rel="stylesheet" href="../assets/css/admin.css">
+
+  <link rel="shortcut icon" href="../assets/images/logo.webp" type="image/x-icon">
 </head>
 
 <body>
